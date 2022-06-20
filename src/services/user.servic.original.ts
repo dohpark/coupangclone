@@ -1,19 +1,14 @@
 import axios from "axios";
 import cookies from "js-cookie";
-import HttpClient from "./HttpClient";
 
-class UserService extends HttpClient {
-  constructor() {
-    super();
-  }
-
+class UserService {
   async me() {
     const accessToken = cookies.get("accessToken");
     if (!accessToken) {
       return;
     }
 
-    const { data } = await this.instance.get("/users/me", {
+    const { data } = await axios.get(process.env.NEXT_PUBLIC_API_HOST + "/users/me", {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
@@ -23,7 +18,7 @@ class UserService extends HttpClient {
   }
 
   async read(id: number) {
-    const { data } = await this.instance.get(`/users/${id}`);
+    const { data } = await axios.get(process.env.NEXT_PUBLIC_API_HOST + "/users/" + id);
 
     return data;
   }
