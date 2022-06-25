@@ -1,8 +1,7 @@
-import axios, { AxiosError } from "axios";
 import cookies from "js-cookie";
-import HttpClient from "./HttpClient";
+import HttpClientAxios from "./HttpClientAxios";
 
-class AuthService extends HttpClient {
+class AuthService extends HttpClientAxios {
   constructor() {
     super();
   }
@@ -13,48 +12,39 @@ class AuthService extends HttpClient {
     if (!refreshToken) {
       return;
     }
-    try {
-      const { data } = await this.instance.post<CookieData>("/auth/refresh", null, {
-        headers: {
-          Authorization: `Bearer ${refreshToken}`,
-        },
-      });
+    const { data } = await this.usePost<CookieData, null>("/auth/refresh", null, {
+      headers: {
+        Authorization: `Bearer ${refreshToken}`,
+      },
+    });
+    console.log("refresh", data);
 
-      cookies.set("accessToken", data.access, { expires: 1 });
-      cookies.set("refreshToken", data.refresh, { expires: 7 });
-    } catch (error) {
-      console.log(error);
-    }
+    cookies.set("accessToken", data.access, { expires: 1 });
+    cookies.set("refreshToken", data.refresh, { expires: 7 });
   }
 
   /** 새로운 계정을 생성하고 토큰을 발급받습니다. */
   async signup({ email, password, name, phoneNumber, agreements }: Signup) {
-    try {
-      const { data } = await this.instance.post<CookieData>("/auth/signup", {
-        email,
-        password,
-        name,
-        phoneNumber,
-        agreements,
-      });
+    const { data } = await this.usePost<CookieData, Signup>("/auth/signup", {
+      email,
+      password,
+      name,
+      phoneNumber,
+      agreements,
+    });
+    console.log("signup", data);
 
-      cookies.set("accessToken", data.access, { expires: 1 });
-      cookies.set("refreshToken", data.refresh, { expires: 7 });
-    } catch (error) {
-      console.log(error);
-    }
+    cookies.set("accessToken", data.access, { expires: 1 });
+    cookies.set("refreshToken", data.refresh, { expires: 7 });
   }
 
   /** 이미 생성된 계정의 토큰을 발급받습니다. */
   async login({ email, password }: Login) {
-    try {
-      const { data } = await this.instance.post<CookieData>("/auth/login", { email, password });
+    const { data } = await this.usePost<CookieData, Login>("/auth/login", { email, password });
+    console.log("login", data);
 
-      cookies.set("accessToken", data.access, { expires: 1 });
-      cookies.set("refreshToken", data.refresh, { expires: 7 });
-    } catch (error) {
-      console.log(error);
-    }
+    cookies.set("accessToken", data.access, { expires: 1 });
+    cookies.set("refreshToken", data.refresh, { expires: 7 });
   }
 }
 
