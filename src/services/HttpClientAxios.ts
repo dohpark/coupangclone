@@ -1,7 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from "axios";
 import { HTTPClient } from "../../types/service";
 
-// axios 설정
 const axiosInstance = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_API_HOST}`,
 });
@@ -13,23 +12,28 @@ class HttpClientAxios extends HTTPClient<AxiosInstance> {
   }
 
   async usePost<T, D>(url: string, dataObject?: D, config?: AxiosRequestConfig<D>) {
-    return await this.instance.post<T, AxiosResponse<T>, D>(url, dataObject, config);
+    const { data } = await this.instance.post<T, AxiosResponse<T>, D>(url, dataObject, config);
+    return data;
   }
 
   async useGet(url: string, config?: AxiosRequestConfig<any>) {
-    return await this.instance.get(url, config);
+    const { data } = await this.instance.get(url, config);
+    return data;
   }
 
   async usePatch<T, D>(url: string, dataObject?: D, config?: AxiosRequestConfig<D>) {
-    return await this.instance.patch<T, AxiosResponse<T>, D>(url, dataObject, config);
+    const { data } = await this.instance.patch<T, AxiosResponse<T>, D>(url, dataObject, config);
+    return data;
   }
 
   async useDelete(url: string, config?: AxiosRequestConfig<any>) {
-    return await this.instance.delete(url, config);
+    const { data } = await this.instance.delete(url, config);
+    return data;
   }
 
   async usePut<T, D>(url: string, dataObject?: D, config?: AxiosRequestConfig<D>) {
-    return await this.instance.put<T, AxiosResponse<T>, D>(url, dataObject, config);
+    const { data } = await this.instance.put<T, AxiosResponse<T>, D>(url, dataObject, config);
+    return data;
   }
 
   initializeResponseInterceptor = () => {
@@ -49,6 +53,3 @@ class HttpClientAxios extends HTTPClient<AxiosInstance> {
 }
 
 export default HttpClientAxios;
-
-// https://github.com/axios/axios/issues/1510
-// https://minhyeong-jang.github.io/2020/01/08/js-axios-interceptors-error

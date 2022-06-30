@@ -1,9 +1,11 @@
 import cookies from "js-cookie";
-import HttpClientAxios from "./HttpClientAxios";
+import { HTTPClient } from "../../types/service";
 
-class UserService extends HttpClientAxios {
-  constructor() {
-    super();
+class UserService {
+  private httpReqType: HTTPClient<any>;
+
+  constructor(httpReqType: HTTPClient<any>) {
+    this.httpReqType = httpReqType;
   }
 
   async me() {
@@ -12,22 +14,20 @@ class UserService extends HttpClientAxios {
       return;
     }
 
-    const { data } = await this.useGet("/users/me", {
+    const data = await this.httpReqType.useGet("/users/me", {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
     });
-    console.log("me", data);
 
     return data;
   }
 
   async read(id: number) {
-    const { data } = await this.useGet(`/users/${id}`);
-    console.log("read", data);
+    const data = await this.httpReqType.useGet(`/users/${id}`);
 
     return data;
   }
 }
 
-export default new UserService();
+export default UserService;
