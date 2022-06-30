@@ -14,4 +14,4 @@ class UseRequest {
   userService = new userService(this.httpReqType);
 }
 
-export const useRequestAxios = new UseRequest(new HttpClientAxios());
+export const useRequest = new UseRequest(new HttpClientAxios());
