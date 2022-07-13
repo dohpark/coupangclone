@@ -247,10 +247,8 @@ export default function SignupPage() {
     const toVisit = [...init];
 
     while (toVisit.length) {
-      console.log("uncheck", toVisit);
       const key = toVisit.pop();
       if (key !== undefined) {
-        console.log(key);
         setRelationship((prev) => {
           prev[key].value = false;
           return prev;
@@ -276,7 +274,6 @@ export default function SignupPage() {
     const toVisit = [...init];
 
     while (toVisit.length) {
-      console.log("check", toVisit);
       const key = toVisit.pop();
       if (key) {
         setRelationship((prev) => {
