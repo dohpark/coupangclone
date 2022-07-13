@@ -2,7 +2,7 @@ import Checkbox, { CheckboxProps } from "../components/common/Checkbox";
 import { Meta, Story } from "@storybook/react";
 
 const CheckboxMeta: Meta = {
-  title: "Checkbox",
+  title: "Common/Checkbox",
   component: Checkbox,
   argTypes: {
     onClick: { action: "clicked" },

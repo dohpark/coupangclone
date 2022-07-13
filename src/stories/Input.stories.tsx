@@ -2,7 +2,7 @@ import Input, { InputProps } from "../components/common/Input";
 import { Meta, Story } from "@storybook/react";
 
 const InputMeta: Meta = {
-  title: "Input",
+  title: "Common/Input",
   component: Input,
 };
 
