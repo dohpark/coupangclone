@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "./ProductHeader/Header";
 import Pagination from "../Pagination/Pagination";
+import axios from "axios";
 
 const Product = () => {
   const [limit, setLimit] = useState(12);
@@ -14,9 +15,17 @@ const Product = () => {
   }, [limit, page]);
 
   useEffect(() => {
-    const result = fetchData(offset, limit, sorter);
-    setData(result);
+    const getData = async () => {
+      const posts = await axios.get(
+        `https://coupang.numble.it/api/products?offset=${offset}&limit=${limit}&sorter=${sorter}`
+      );
+      setData(posts.data);
+    };
+
+    getData();
   }, [offset, limit, sorter]);
+
+  console.log(data);
 
   return (
     <>
@@ -26,13 +35,9 @@ const Product = () => {
         limit={limit}
         sorter={sorter}
       />
-      <Pagination />
+      <Pagination page={page} valid={data.length === limit} setPage={setPage} />
     </>
   );
 };
-
-function fetchData(offset: number, limit: number, sorter: string) {
-  return [];
-}
 
 export default Product;
