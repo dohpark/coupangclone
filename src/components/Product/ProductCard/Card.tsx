@@ -31,7 +31,7 @@ const Card: React.FC<CardProps> = ({ value }) => {
   return (
     <Container>
       <ImageCard imageUrl={imageUrl} name={name} />
-      <Recommend />
+      <Recommend isRecommended={isRecommended} />
       <ProductName name={name} />
       <Price />
       <Delivery />

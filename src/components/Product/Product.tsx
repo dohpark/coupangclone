@@ -38,7 +38,7 @@ const Product = () => {
         sorter={sorter}
       />
       <Grid>
-        {data.slice(0, 1).map((value) => (
+        {data.map((value) => (
           <Card key={value.id} value={value} />
         ))}
       </Grid>
