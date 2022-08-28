@@ -1,3 +1,5 @@
-const Points = () => {};
+const Points = () => {
+  return <>Points</>;
+};
 
 export default Points;

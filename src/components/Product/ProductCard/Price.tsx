@@ -1,3 +1,5 @@
-const Price = () => {};
+const Price = () => {
+  return <>Price</>;
+};
 
 export default Price;
