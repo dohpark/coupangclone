@@ -55,7 +55,7 @@ const Container = styled.div`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: 274px 274px 274px 274px;
 `;
 
 interface dataType {

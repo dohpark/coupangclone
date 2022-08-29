@@ -19,6 +19,7 @@ export default WeightPerPrice;
 const Container = styled.div`
   font-size: 11px;
   color: #ae0000;
+  padding-bottom: 5px;
 `;
 
 interface WeightPerPriceProps {
