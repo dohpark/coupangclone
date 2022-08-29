@@ -4,16 +4,16 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faEmptyStar } from "@fortawesome/free-regular-svg-icons";
 
 const Star: React.FC<StarProps> = ({ rating }) => {
-  const starCheck = [0, 0, 0, 0, 0].map((v, i) => {
-    if (rating >= i + 1) return 3;
-    if (rating >= i + 0.5) return 2;
-    else return 1;
+  const starCheck = ["star", "star", "star", "star", "star"].map((v, i) => {
+    if (rating >= i + 1) return "starFilled";
+    if (rating >= i + 0.5) return "starHalf";
+    else return "starEmpty";
   });
 
   return (
     <span>
       {starCheck.map((type, index) => {
-        if (type === 3)
+        if (type === "starFilled")
           return (
             <FontAwesomeIcon
               key={"faStar" + index}
@@ -21,7 +21,7 @@ const Star: React.FC<StarProps> = ({ rating }) => {
               style={{ color: "#F5C400" }}
             />
           );
-        if (type === 2)
+        if (type === "starHalf")
           return (
             <FontAwesomeIcon
               key={"faStarHalfStroke" + index}
@@ -29,7 +29,7 @@ const Star: React.FC<StarProps> = ({ rating }) => {
               style={{ color: "#F5C400" }}
             />
           );
-        if (type === 1)
+        if (type === "starEmpty")
           return (
             <FontAwesomeIcon
               key={"faEmptyStar" + index}

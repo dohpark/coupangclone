@@ -43,6 +43,7 @@ const RewardCashTxt = styled.span`
   color: #333;
   font-size: 12px;
   height: 14px;
+  padding-left: 2px;
 `;
 
 export default Points;
