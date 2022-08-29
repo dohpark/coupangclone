@@ -45,7 +45,7 @@ const Card: React.FC<CardProps> = ({ value }) => {
         isAssured={isAssured}
         isEarlyDelivery={isEarlyDelivery}
       />
-      <Review />
+      <Review rating={rating} reviewCount={reviewCount} />
       <Points />
     </Container>
   );

@@ -23,7 +23,7 @@ const Price: React.FC<PriceProps> = ({
 };
 
 const Container = styled.div`
-  padding-top: 8px;
+  padding-top: 5px;
   position: relative;
 `;
 
