@@ -30,7 +30,7 @@ const Product = () => {
   console.log(data);
 
   return (
-    <>
+    <Container>
       <Header
         setLimit={setLimit}
         setSorter={setSorter}
@@ -43,12 +43,19 @@ const Product = () => {
         ))}
       </Grid>
       <Pagination page={page} valid={data.length === limit} setPage={setPage} />
-    </>
+    </Container>
   );
 };
 
+const Container = styled.div`
+  width: 1096px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
 const Grid = styled.div`
   display: grid;
+  grid-template-columns: auto auto auto auto;
 `;
 
 interface dataType {
