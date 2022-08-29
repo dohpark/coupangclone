@@ -5,15 +5,13 @@ import coupangRecommended from "../../../../public/coupangRecommend.png";
 const Recommend: React.FC<RecommendProps> = ({ isRecommended }) => {
   return (
     <Container>
-      {isRecommended ? (
+      {isRecommended && (
         <Image
           src={coupangRecommended}
           alt="coupangRecommend"
           width="68"
           height="20"
-        ></Image>
-      ) : (
-        ""
+        />
       )}
     </Container>
   );
@@ -24,7 +22,7 @@ interface RecommendProps {
 }
 
 const Container = styled.div`
-  padding: 16px 0 5px;
+  padding: 10px 0 10px;
   height: 17px;
   line-height: 16px;
 `;

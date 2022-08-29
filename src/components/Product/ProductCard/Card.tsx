@@ -33,7 +33,13 @@ const Card: React.FC<CardProps> = ({ value }) => {
       <ImageCard imageUrl={imageUrl} name={name} />
       <Recommend isRecommended={isRecommended} />
       <ProductName name={name} />
-      <Price />
+      <Price
+        originalPrice={originalPrice}
+        salePrice={salePrice}
+        weight={weight}
+        wowPrice={wowPrice}
+        isEarlyDelivery={isEarlyDelivery}
+      />
       <Delivery />
       <Review />
       <Points />
@@ -42,7 +48,7 @@ const Card: React.FC<CardProps> = ({ value }) => {
 };
 
 const Container = styled.div`
-  width: 200px;
+  width: 234px;
   padding: 20px;
   border-bottom: 1px solid #ddd;
 `;
