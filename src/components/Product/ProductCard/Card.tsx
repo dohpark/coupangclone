@@ -40,7 +40,11 @@ const Card: React.FC<CardProps> = ({ value }) => {
         wowPrice={wowPrice}
         isEarlyDelivery={isEarlyDelivery}
       />
-      <Delivery />
+      <Delivery
+        expectedDeliveryDate={expectedDeliveryDate}
+        isAssured={isAssured}
+        isEarlyDelivery={isEarlyDelivery}
+      />
       <Review />
       <Points />
     </Container>
